@@ -13,17 +13,17 @@
 
     <div class="">
         <form action="resultado.php" method="post">
-            <label for="valor1">Digite o primeiro número:</label>
-            <input type="number" name="valor1" id="valor1">
-            <label for="valor2">Digite o segundo número:</label>
-            <input type="number" name="valor2" id="valor2">
+            <label for="valor">Digite o primeiro número:</label>
+            <input type="number" name="numero" id="valor">
+            <label for="valor1">Digite o segundo número:</label>
+            <input type="number" name="numero1" id="valor1">
             <label for="operacoes">Escolha a operação:</label>
-            <select name="operacoes" id="operacoes">
+            <select name="operadores" id="operacoes">
                 <option value="">--Selecione--</option>
-                <option value="+">Soma (+)</option>
-                <option value="-">Subtração (-)</option>
-                <option value="x">Multiplicação (&times;)</option>
-                <option value="/">Divisão (&divide;)</option>
+                <option value="soma">Soma (+)</option>
+                <option value="subtracao">Subtração (-)</option>
+                <option value="multiplicacao">Multiplicação (&times;)</option>
+                <option value="divisao">Divisão (&divide;)</option>
             </select>
             <button type="submit">Calcular</button>
         </form>
