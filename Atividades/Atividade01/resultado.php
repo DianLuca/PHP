@@ -19,8 +19,9 @@
                     $operadores = htmlspecialchars($_POST['operadores']);
                     $numero = htmlspecialchars($_POST['numero']);
                     $numero1 = htmlspecialchars($_POST['numero1']);
-                    
-                    if(isset($operadores) && isset($numero) && isset($numero1)){
+
+                    // Verificando se não possuí valores inválidos e se todos são valores númericos (refatorar)
+                    if((isset($operadores) && isset($numero) && isset($numero1)) && ((is_numeric($numero)) && (is_numeric($numero1)))){
 
                         switch($operadores) {
                             case 'soma':
@@ -50,7 +51,7 @@
 
                     } else {
 
-                        echo 'Impossível de realizar as operações! Nada foi enviado.';
+                        echo 'Impossível de realizar as operações! Os valores foram inseridos incorretamente.';
 
                     }
 

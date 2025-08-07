@@ -1,17 +1,24 @@
 // const a = document.querySelector('a');
+// const p = document.querySelector('p');
+// const form = document.querySelector('form');
 
-// document.addEventListener('submit', (e)=> {
+// form.addEventListener('submit', (e)=> {
 
 //     const numero = document.querySelector('#valor').value;
 //     const numero1 = document.querySelector('#valor1').value;
-//     const operacao = document.querySelector('#operacoes').value;
+//     // const operacao = document.querySelector('#operacoes').value;
 
-//     if (isNaN(numero) && isNaN(numero1) && (operacao === '')) {
-//         e.preventDefault();
+//     if ((!isNaN(numero)) || (!isNaN(numero1))) {
+//         alert('Insira apenas números!');
+//         p.textContent = 'Não foi possível realizar a operação. Insira os valores novamente!';
 //         a.textContent = 'Voltar';
-//         return
-//     }
-// })
+//         e.preventDefault();
+//         return;
+//     };
+    
+//     // e.preventDefault();
+//     // return;
+// });
 
 
-// Ainda posso tentar implementar outras verificações neste arquivo
+// // Ainda posso tentar implementar outras verificações neste arquivo

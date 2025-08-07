@@ -29,6 +29,6 @@
         </form>
     </div>
 
-    <script src="js/scrpit.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

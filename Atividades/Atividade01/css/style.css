@@ -8,6 +8,7 @@
 body {
     max-height: 100vh;
     background-color: #e6f0f8;
+    font-size: 1.4em;
 }
 
 header {
@@ -18,7 +19,6 @@ header {
     align-items: center;
     color: #ffffff;
     background-color: #0077b6;
-    font-size: 1.3em;
 }
 
 div {
@@ -26,17 +26,16 @@ div {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    margin: auto;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px #00000033;
-    width: 40%;
+    width: 35%;
+    min-height: 150px;
     padding: 40px;
     margin: 60px auto;
 }
 
 form {
-    font-size: 1.4em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,4 +56,14 @@ button {
     border-radius: 3px;
     padding: 5px;
     color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: #0077b6;
+    margin-top: 30px;
+}
+
+a:hover{
+    text-decoration: underline;
 }
