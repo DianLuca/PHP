@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php
@@ -65,16 +66,16 @@
         <?php foreach($_SESSION['alunos'] as $aluno): ?>
             <h3><?= htmlspecialchars($aluno['nome']) ?></h3>
             <ul>
-                <li>Nota 1: <?= $aluno['nota1'] ?></li>
-                <li>Nota 2: <?= $aluno['nota2'] ?></li>
-                <li>Nota 3: <?= $aluno['nota3'] ?></li>
-                <li>Nota 4: <?= $aluno['nota4'] ?></li>
+                <li>Nota 1: <?= $aluno['nota1'] ?>;</li>
+                <li>Nota 2: <?= $aluno['nota2'] ?>;</li>
+                <li>Nota 3: <?= $aluno['nota3'] ?>;</li>
+                <li>Nota 4: <?= $aluno['nota4'] ?>;</li>
                 <?php
                 $soma = $aluno['nota1'] + $aluno['nota2'] + $aluno['nota3'] + $aluno['nota4'];
                 $media = $soma / 4;
                 ?>
-                <li><strong>Soma:</strong><?= $soma ?></li>
-                <li><strong>Média:</strong><?= number_format($media, 2, ',', '.') ?></li>
+                <li><strong>Soma: </strong><?= $soma ?>;</li>
+                <li><strong>Média: </strong><?= number_format($media, 2, ',', '.') ?>.</li>
             </ul>
             <hr>
         <?php endforeach; ?>
