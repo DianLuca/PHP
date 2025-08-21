@@ -1,23 +1,26 @@
 <?php
+
+session_start();
+
+if ($_POST['numero']) {
+    $_SESSION['numero'] = $_POST['numero'];
+}
+
+$numeroAleatorio = rand(0, 3);
+
 function adivinhar($numero) {
-    $numeroAleatorio = rand(0, 100);
+
     $tentativas = 0;
+    
+    global $numeroAleatorio;
 
-    echo $numeroAleatorio;
-
-    while (true){
-        
-
-        if ($numero == $numeroAleatorio) {
-
-            echo "Você acertou!";
-            break;
-        }
-        break;
-        // if ($numero == $numeroAleatorio){
-        // } else {
-            
-        // }
+    if($numero == $numeroAleatorio) {
+        echo "Você digitou: $numero e  acertou o número aleatório: $numeroAleatorio! <br>
+        O número de tentativas foi de: $tentativas.";
+        exit();
+    } else {
+        echo "Você errou! Tente novamente!";
+        $tentativas++;
     }
 }
 

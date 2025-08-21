@@ -24,7 +24,7 @@ Permita vários saques até o usuário encerrar o programa.
             <form action="" method="post">
                 <label for="numero">Digite um número:</label>
                 <input type="number" name="numero" id="valor" placeholder="Ex.: 1, 2,...">
-                <button type="submit">CALCULAR</button>
+                <button type="submit">Sacar</button>
             </form>
             <p>
                 <?php
@@ -32,7 +32,7 @@ Permita vários saques até o usuário encerrar o programa.
                     $numero = htmlspecialchars($_POST['numero'] ?? 0);
 
                     if((int)$numero){
-                        tabuada($numero);
+                        sacar($numero);
                     } else {
                         echo "Digite um número para começar.";
                     }

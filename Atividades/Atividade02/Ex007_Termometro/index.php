@@ -23,17 +23,25 @@ Permita que o usuário repita quantas conversões quiser.
     <main>
         <section>
             <form action="" method="post">
-                <label for="numero">Digite um número:</label>
+                <label for="valor">Digite um número:</label>
                 <input type="number" name="numero" id="valor" placeholder="Ex.: 1, 2,...">
+                <label for="temp">Selecione o unidade de medida:</label>
+                <select name="temperatura" id="temp">
+                    <option value="">Selecione</option>
+                    <option value="Celsius">Celsius</option>
+                    <option value="Fahrenheit">Fahrenheit</option>
+                    <option value="Kelvin">Kelvin</option>
+                </select>
                 <button type="submit">Converter</button>
             </form>
             <p>
                 <?php
                     include "public/processa.php";
                     $numero = htmlspecialchars($_POST['numero'] ?? 0);
+                    $temperatura = htmlspecialchars($_POST['temperatura'] ?? '');
 
                     if((int)$numero){
-                        conversor($numero);
+                        conversor($numero, $temperatura);
                     } else {
                         echo "Digite um número para começar.";
                     }

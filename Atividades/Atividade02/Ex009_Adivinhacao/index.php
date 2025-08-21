@@ -5,6 +5,15 @@ Crie uma função que valide o palpite e retorne se o número é maior, menor ou
 Use laços de repetição para permitir várias tentativas.
 Mostre ao final quantas tentativas o jogador precisou para acertar.
  -->
+<?php
+
+// session_start();
+
+// if ($_POST['numero']) {
+    // $_SESSION['numero'] = $_POST['numero'];
+// }
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,6 +37,7 @@ Mostre ao final quantas tentativas o jogador precisou para acertar.
             </form>
             <p>
                 <?php
+
                     include "public/processa.php";
                     $numero = htmlspecialchars($_POST['numero'] ?? 0);
 
