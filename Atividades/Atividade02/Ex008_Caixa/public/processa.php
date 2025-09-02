@@ -2,9 +2,9 @@
 
 function sacar($valor){
 
-    $resto = 0;
+    $resto = $valor;
 
-    if ($valor > 100) {
+    if ($resto >= 100) {
         $numNotas = intdiv($valor, 100);
         $resto = $valor % 100;
         echo "Foi sacado $numNotas nota de 100;<br>";
@@ -34,8 +34,12 @@ function sacar($valor){
         echo "Foi sacado $numNotas nota de 5;<br>";
     }
 
-    echo "Não foi possuí sacar o valor total de R$" . number_format($valor, 2, ',', '.') . " devido a falta de cédulas compativeís.
-    <br>O valor restante: R$". number_format($resto, 2, ',', '.');
+    if ($resto == 0) {
+        echo "<br>Todo valor sacado!";
+    } else {
+        echo "<br>Não foi possível sacar o valor total de R$" . number_format($valor, 2, ',', '.') . " devido a falta de cédulas compativeís.
+        <br>O valor restante: R$". number_format($resto, 2, ',', '.') . ".";
+    }
 
 }
 

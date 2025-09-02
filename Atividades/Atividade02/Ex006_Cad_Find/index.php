@@ -8,6 +8,39 @@ Crie funções para:
 • Pesquisar produto por nome
 • Utilize laços e condicionais para navegação em um menu de opções.
  -->
+<?php
+session_start();
+include "public/processa.php";
+
+$resposta;
+
+if(!isset($_SESSION['produtos'])){
+    $_SESSION['produtos'] = [];
+}
+
+$produtoNome = $_POST['nomeProduto'] ?? "";
+$produtoPreco = $_POST['precoProduto'] ?? "";
+$buscaProduto = $_GET['buscaProduto'] ?? "";
+
+
+if($_SERVER['METHOD_REQUEST'] = 'POST') {
+    if($produtoNome !== '' && $produtoPreco !== '') {
+        $_SESSION['produtos'][] = cadastrarProduto($produtoNome, $produtoPreco); 
+    } else {
+        $resposta = "Não foi possível cadastrar o produto, todos os campos devem ser inseridos.";
+    }
+}
+
+if($_SERVER['METHOD_REQUEST'] = 'GET') {
+    if($buscaProduto !== "") {
+        $respostaBusca = buscar($buscaProduto);   
+    } else {
+        $respostaBusca = "Produto não encontrado!";
+    }
+}
+
+// session_destroy();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,22 +58,30 @@ Crie funções para:
     <main>
         <section>
             <form action="" method="post">
-                <label for="numero">Digite um número:</label>
-                <input type="number" name="numero" id="valor" placeholder="Ex.: 1, 2,...">
-                <button type="submit">CALCULAR</button>
+                <label for="nome">Digite o nome do Produto:</label>
+                <input type="text" name="nomeProduto" id="nome" placeholder="Ex.: Goiaba">
+                <label for="valor">Digite o valor:</label>
+                <input type="number" name="precoProduto" step='0.01' id="valor" placeholder="Ex.: 1,30">
+                <button type="submit">Cadastrar Produto</button>
             </form>
-            <p>
-                <?php
-                    include "public/processa.php";
-                    $numero = htmlspecialchars($_POST['numero'] ?? 0);
-
-                    if((int)$numero){
-                        tabuada($numero);
-                    } else {
-                        echo "Digite um número para começar.";
-                    }
-                ?>
-            </p>
+            <form action="" method="get">
+                <label for="busca">Buscar Produto:</label>
+                <input type="text" name="buscaProduto" id="busca" placeholder="Ex.: Maçã">
+                <button type="submit">Buscar</button>
+            </form>
+            <div>
+                <?php if (!empty($_SESSION['produtos'])): ?>
+                    <?php apresentarProdutos(); ?>
+                    <?php echo $resposta; ?>
+                <?php endif;?>
+            </div>
+            <div>
+                <?php if (!empty($_SESSION['produtos'])): ?>
+                    <?php echo $respostaBusca ?>
+                <?php //else: ?>
+                    <?php //echo $resposta; ?>
+                <?php endif;?>
+            </div>
         </section>
     </main>
 

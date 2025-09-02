@@ -7,11 +7,45 @@ Mostre ao final quantas tentativas o jogador precisou para acertar.
  -->
 <?php
 
-// session_start();
+session_start();
+include "public/processa.php";
 
-// if ($_POST['numero']) {
-    // $_SESSION['numero'] = $_POST['numero'];
-// }
+$resultado = '';
+
+// Para gerar o número aleatório e salvar
+if (!isset($_SESSION['numeroAleatorio'])) {
+    $_SESSION['numeroAleatorio'] = rand(1, 100);
+}
+
+// Para salvar o número de tentativas e enviar o valor salvo junto da função
+if(!isset($_SESSION['tentativas'])) {
+    $_SESSION['tentativas'] = 0;
+}
+
+// Iniciando as variáveis necessárias
+$numeroAleatorio = $_SESSION['numeroAleatorio'];
+$tentativas = $_SESSION['tentativas']++;
+
+
+if($_SERVER['METHOD_REQUEST'] = 'POST') {
+    if(isset($_POST['numero'])) {
+        $numero = htmlspecialchars($_POST['numero']);
+
+        if((int)$numero){
+            $resultado = adivinhar($numero, $numeroAleatorio, $tentativas);
+        } else {
+            $resultado = "Digite um número para começar.";
+        }
+    }
+
+    // Encerrando a sessão e gerando um npvp número
+    if(isset($_POST['resetar'])){
+        unset($_SESSION['numeroAleatorio']);
+        unset($_SESSION['tentativas']);
+        header("Location:index.php");
+        exit;
+    }
+}
 
 ?>
 
@@ -31,23 +65,18 @@ Mostre ao final quantas tentativas o jogador precisou para acertar.
     <main>
         <section>
             <form action="" method="post">
-                <label for="num">Digite um número entre 0 e 100:</label>
-                <input type="number" name="numero" id="num" placeholder="Ex.: 10">
+                <label for="num">Digite um número entre 1 e 100:</label>
+                <input type="number" name="numero" id="num" min='1' max='100' placeholder="Ex.: 10">
                 <button type="submit">Adivinhar</button>
             </form>
-            <p>
-                <?php
+            <form action="" method="post">
+                <input type="hidden" name="resetar">
+                <button type="submit">Resetar</button>
+            </form>
 
-                    include "public/processa.php";
-                    $numero = htmlspecialchars($_POST['numero'] ?? 0);
-
-                    if((int)$numero){
-                        adivinhar($numero);
-                    } else {
-                        echo "Digite um número para começar.";
-                    }
-                ?>
-            </p>
+            <?php if ($resultado): ?>
+                <p><strong><?php echo $resultado; ?></strong></p>
+            <?php endif; ?>
         </section>
     </main>
 
