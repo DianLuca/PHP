@@ -12,7 +12,7 @@
     <!-- Formulário para adicionar nova tarefa  -->
     <form action="">
         <label for="novaTarefa">Adicionar tarefa:</label>
-        <input type="text" name="" id="novaTafera" placeholder="Digite uma nova tarefa...">
+        <input type="text" name="" id="novaTarefa" placeholder="Digite uma nova tarefa...">
         <button id="btnAdicionar">Adicionar</button>
     </form>
 

@@ -31,7 +31,7 @@ async function carregarTarefas() {
         // Botão de editar
         const btnEditar = document.createElement("button");
         btnEditar.textContent = "Editar";
-        btnConcluir.onclick = async () => {
+        btnEditar.onclick = async () => {
             // Abre o promt para editar o texto
             const novoTitulo = prompt("Editar tarefa:", t.titulo);
             if (novoTitulo && novoTitulo.trim() !== "") {
@@ -71,7 +71,7 @@ document.querySelector("#btnAdicionar").onclick = async () => {
     await fetch("../api/adicionar.php", {
         method: "POST",
         body: JSON.stringify({
-            titulo
+            titulo:titulo
         })
     });
 
